@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Selectablemedia</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="container">
+		<div class="navbar">
+		  <div class="navbar-inner">
+		    <div class="container">
+		      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </a>
+		      <a class="brand" href="#">Admin</a>
+		      <div class="nav-collapse">
+		        <ul class="nav">
+		          <li><%=link_to 'Customers', customers_path %></li>
+		        </ul>
+		      </div>
+		    </div>
+		  </div>
+		</div>		
+		<div class="row">
+			<% flash.each do |name, msg| %>
+			  <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+          <a class="close" data-dismiss="alert">&times;</a>
+          <%= msg  %>
+		    </div>
+		  <% end %>
+      <div id="content-page"><%= yield %></div>
+    </div>
+    
+  </div>
+  
+  <div id="btn-popup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="popup-title" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="popup-title">Modal header</h3>
+    </div>
+    <div class="modal-body"></div>
+  </div>
+</body>
+</html>
